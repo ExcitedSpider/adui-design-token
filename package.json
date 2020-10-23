@@ -15,7 +15,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "lodash.kebabcase": "^4.1.1"
+    "@types/tinycolor2": "^1.4.2",
+    "lodash.kebabcase": "^4.1.1",
+    "tinycolor2": "^1.4.2"
   },
   "devDependencies": {
     "rollup": "^2.32.1",

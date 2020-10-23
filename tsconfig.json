@@ -6,6 +6,6 @@
     "baseUrl": "./",
     "noEmitOnError": true,
     "skipLibCheck": true,
-    "paths": {}
+    "paths": {},
   }
 }
