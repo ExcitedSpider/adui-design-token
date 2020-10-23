@@ -7,7 +7,7 @@
 ### 安装库
 
 ```bash
-npm i --save adui-design-token
+npm i --save @tencent/adui-design-token
 ```
 
 ### 引入 Token
