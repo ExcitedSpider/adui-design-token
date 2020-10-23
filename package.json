@@ -1,6 +1,6 @@
 {
   "name": "@tencent/adui-design-token",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "适用于 ADUI 规范的 design token; 提供 cjs, esm, css var, scss var 的引用方式",
   "main": "lib/index.js",
   "module": "lib/index.esm.js",
@@ -14,11 +14,12 @@
   },
   "author": "qefeng",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "tinycolor2": "^1.4.2"
+  },
   "devDependencies": {
     "@types/tinycolor2": "^1.4.2",
     "lodash.kebabcase": "^4.1.1",
-    "tinycolor2": "^1.4.2",
     "@rollup/plugin-node-resolve": "^9.0.0",
     "@rollup/plugin-sucrase": "^3.1.0",
     "@tencent/eslint-config-tencent": "^0.12.2",
