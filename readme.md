@@ -1,6 +1,6 @@
 # ADUI Design Token
 
-适用于 ADUI 规范的 design token; 提供 cjs, esm, css var, scss var 的引用方式
+适用于 ADUI 规范的 design token; 提供 cjs, esm, css var, scss var, wxss 的引用方式
 
 ## 使用方式
 
@@ -26,21 +26,32 @@ npm i --save @tencent/adui-design-token
 
 3. css
 
-   1. 使用 css import
+
+   使用 css import，或者使用一些打包工具
 
     ```css
     @import '~adui-design-token/var.css';
     ```
 
-    2. 使用一些打包工具，如 [css-loader](https://webpack.js.org/loaders/css-loader/):
-
     ```js
-    import css from 'file.css';
+    // webpack css-loader
+    import 'adui-design-token/var.css';
     ```
 
 4. scss
 
     同 css。
+
+5. wxss
+
+    由于小程序平台特殊性，wxss 的引入与 css 有些不同:
+
+    - 只能使用相对路径引入
+
+    ```css
+    @import '../miniprogram_npm/adui-design-token/var.wxss';
+    ```
+
 
 ## 开发
 

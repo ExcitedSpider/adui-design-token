@@ -54,9 +54,6 @@ function buildCSS() {
     .pipe(rename('var.css'))
     .pipe(logger({ showChange: true }))
     .pipe(dest('lib'))
-    .pipe(rename('var.wxss'))
-    .pipe(logger({ showChange: true }))
-    .pipe(dest('lib'));
 }
 
 function buildSCSS() {
@@ -72,4 +69,17 @@ function buildSCSS() {
     .pipe(dest('lib'));
 }
 
-exports.default = series(clean, buildTS, parallel(buildCSS, buildSCSS));
+function buildWXSS() {
+  return src(['lib/index.js'])
+    .pipe(plumber())
+    .pipe(
+      gulpMustache(join(__dirname, '../src/template/wxss.mustache'), {
+        compiler: tokenCompiler,
+      })
+    )
+    .pipe(rename('var.wxss'))
+    .pipe(logger({ showChange: true }))
+    .pipe(dest('lib'));
+}
+
+exports.default = series(clean, buildTS, parallel(buildCSS, buildSCSS, buildWXSS));
