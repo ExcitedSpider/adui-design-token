@@ -1,4 +1,4 @@
 export default {
-  name: "--background-color",
-  value: "#ffffff",
+  primaryColor: "#07c160",
+  adGreen: "#07c160",
 };
