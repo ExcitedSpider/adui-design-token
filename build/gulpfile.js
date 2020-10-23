@@ -53,6 +53,9 @@ function buildCSS() {
     )
     .pipe(rename('var.css'))
     .pipe(logger({ showChange: true }))
+    .pipe(dest('lib'))
+    .pipe(rename('var.wxss'))
+    .pipe(logger({ showChange: true }))
     .pipe(dest('lib'));
 }
 
