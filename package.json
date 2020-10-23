@@ -12,7 +12,7 @@
     "type": "git",
     "url": "git@git.code.oa.com:wxad/adui-design-token.git"
   },
-  "author": "",
+  "author": "qefeng",
   "license": "ISC",
   "dependencies": {
     "@types/tinycolor2": "^1.4.2",
