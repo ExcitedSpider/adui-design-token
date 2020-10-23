@@ -1,7 +1,7 @@
 {
   "name": "adui-design-token",
   "version": "1.0.0",
-  "description": "",
+  "description": "适用于 ADUI 规范的 design token; 提供 cjs, esm, css var, scss var 的引用方式",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "sideEffects": false,

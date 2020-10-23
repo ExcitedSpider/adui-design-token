@@ -11,7 +11,7 @@ const sucrase = require('@rollup/plugin-sucrase');
 const resolve = require('@rollup/plugin-node-resolve');
 
 function clean(cb) {
-  del('/dist');
+  del('/lib');
   cb();
 }
 
@@ -30,20 +30,20 @@ async function buildTS() {
   });
 
   await bundle.write({
-    file: './dist/index.js',
+    file: './lib/index.js',
     format: 'cjs',
     sourcemap: true,
   });
 
   await bundle.write({
-    file: './dist/index.esm.js',
+    file: './lib/index.esm.js',
     format: 'esm',
     sourcemap: true,
   });
 }
 
 function buildCSS() {
-  return src(['dist/index.js'])
+  return src(['lib/index.js'])
     .pipe(plumber())
     .pipe(
       gulpMustache(join(__dirname, '../src/template/css.mustache'), {
@@ -51,22 +51,22 @@ function buildCSS() {
         showLogger: true,
       })
     )
-    .pipe(rename({ extname: '.css' }))
+    .pipe(rename('var.css'))
     .pipe(logger({ showChange: true }))
-    .pipe(dest('dist'));
+    .pipe(dest('lib'));
 }
 
 function buildSCSS() {
-  return src(['dist/index.js'])
+  return src(['lib/index.js'])
     .pipe(plumber())
     .pipe(
       gulpMustache(join(__dirname, '../src/template/scss.mustache'), {
         compiler: tokenCompiler,
       })
     )
-    .pipe(rename({ extname: '.scss' }))
+    .pipe(rename('var.scss'))
     .pipe(logger({ showChange: true }))
-    .pipe(dest('dist'));
+    .pipe(dest('lib'));
 }
 
 exports.default = series(clean, buildTS, parallel(buildCSS, buildSCSS));
