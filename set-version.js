@@ -2,8 +2,10 @@ const fs = require('fs');
 
 const newVersion = process.env.BK_CI_REPO_GIT_WEBHOOK_TAG_NAME;
 
-if(!newVersion){
-  console.warn('No version tag set! Use ${oldversion}.1 for new version tag.')
+if (!newVersion) {
+  console.warn('No version tag set! Use ${oldversion}.1 for new version name.');
+} else {
+  console.log(`use tag ${process.env.BK_CI_REPO_GIT_WEBHOOK_TAG_NAME} for new version name`);
 }
 
 const packageDescription = require('./package.json');
