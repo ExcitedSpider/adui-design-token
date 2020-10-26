@@ -30,12 +30,12 @@ npm i --save @tencent/adui-design-token
    使用 css import，或者使用一些打包工具
 
     ```css
-    @import '~adui-design-token/var.css';
+    @import '~adui-design-token/lib/var.css';
     ```
 
     ```js
     // webpack css-loader
-    import 'adui-design-token/var.css';
+    import 'adui-design-token/lib/var.css';
     ```
 
 4. scss

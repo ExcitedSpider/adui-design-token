@@ -5,6 +5,7 @@ export default {
   primaryColor: tinycolor('#07C160').toHexString(),
   adGreen: tinycolor('#07C160').toHexString(),
   adOrange: tinycolor('#EDA20C').toHexString(),
+  adBlue: tinycolor('#2B7BD6').toHexString(),
   adRed: tinycolor('#D9514C').toHexString(),
   transparentGray50: tinycolor('rgba(0,0,0,0.02)').toRgbString(),
   transparentGray100: tinycolor('rgba(0,0,0,0.06)').toRgbString(),
