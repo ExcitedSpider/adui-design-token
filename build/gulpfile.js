@@ -10,7 +10,7 @@ const tokenCompiler = require('./token-compiler');
 const typescript = require('rollup-plugin-typescript2');
 
 function clean(cb) {
-  del('/lib');
+  del('./lib');
   cb();
 }
 

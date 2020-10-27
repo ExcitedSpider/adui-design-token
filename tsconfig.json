@@ -8,5 +8,6 @@
     "paths": {},
     "declaration": true,
     "declarationDir": "./lib",
+    "allowSyntheticDefaultImports": true
   }
 }
