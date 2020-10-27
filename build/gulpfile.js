@@ -7,8 +7,7 @@ const { join } = require('path');
 const rename = require('gulp-rename');
 const rollup = require('rollup');
 const tokenCompiler = require('./token-compiler');
-const sucrase = require('@rollup/plugin-sucrase');
-const resolve = require('@rollup/plugin-node-resolve');
+const typescript = require('rollup-plugin-typescript2');
 
 function clean(cb) {
   del('/lib');
@@ -16,23 +15,45 @@ function clean(cb) {
 }
 
 async function buildTS() {
+  // const bundle = await rollup.rollup({
+  //   input: './src/var/index.ts',
+  //   plugins: [
+  //     resolve.nodeResolve({
+  //       extensions: ['.js', '.ts'],
+  //     }),
+  //     sucrase({
+  //       exclude: ['node_modules/**'],
+  //       transforms: ['typescript']
+  //     }),
+  //   ],
+  // });
+
+  // await bundle.write({
+  //   file: './lib/index.js',
+  //   format: 'cjs',
+  //   sourcemap: true,
+  // });
+
+  // await bundle.write({
+  //   file: './lib/index.esm.js',
+  //   format: 'esm',
+  //   sourcemap: true,
+  // });
+
   const bundle = await rollup.rollup({
     input: './src/var/index.ts',
-    plugins: [
-      resolve.nodeResolve({
-        extensions: ['.js', '.ts'],
-      }),
-      sucrase({
-        exclude: ['node_modules/**'],
-        transforms: ['typescript'],
-      }),
-    ],
+    plugins: [typescript()],
+    output: {
+      dir: 'lib',
+      format: 'cjs',
+      file: './lib/index.js'
+    },
   });
 
   await bundle.write({
-    file: './lib/index.js',
     format: 'cjs',
     sourcemap: true,
+    dir: 'lib',
   });
 
   await bundle.write({
@@ -53,7 +74,7 @@ function buildCSS() {
     )
     .pipe(rename('var.css'))
     .pipe(logger({ showChange: true }))
-    .pipe(dest('lib'))
+    .pipe(dest('lib'));
 }
 
 function buildSCSS() {
@@ -83,3 +104,4 @@ function buildWXSS() {
 }
 
 exports.default = series(clean, buildTS, parallel(buildCSS, buildSCSS, buildWXSS));
+// exports.default = series(clean, buildTS);
