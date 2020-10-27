@@ -1,4 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/no-require-imports
 import tinycolor from 'tinycolor2';
 
 export default {
