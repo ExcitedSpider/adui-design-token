@@ -55,6 +55,13 @@ npm i --save @tencent/adui-design-token
 
 ## 开发
 
+### 开发指引
+
+* 怎么添加新变量 ？
+
+    添加变量到 `src/var/index.ts` 的 default exports 中
+
+
 ### 编译
 
 ```bash
