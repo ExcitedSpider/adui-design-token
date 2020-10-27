@@ -1,6 +1,6 @@
 {
   "name": "@tencent/adui-design-token",
-  "version": "0.4.5",
+  "version": "1.0.0",
   "description": "适用于 ADUI 规范的 design token; 提供 cjs, esm, css, scss, wxss 的引用方式",
   "main": "lib/index.js",
   "module": "lib/index.esm.js",
