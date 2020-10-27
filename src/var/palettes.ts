@@ -18,6 +18,7 @@ export default {
   transparentGray800: tinycolor('rgba(0,0,0,0.58)').toRgbString(),
   transparentGray900: tinycolor('rgba(0,0,0,0.88)').toRgbString(),
   transparentGray1000: tinycolor('rgba(0,0,0,1)').toRgbString(),
+  gray0: tinycolor('#FFFFFF').toHexString(),
   gray50: tinycolor('#FAFAFA').toHexString(),
   gray100: tinycolor('#F2F2F2').toHexString(),
   gray200: tinycolor('#EBEBEB').toHexString(),
@@ -28,6 +29,7 @@ export default {
   gray700: tinycolor('#A3A3A3').toHexString(),
   gray800: tinycolor('#6B6B6B').toHexString(),
   gray900: tinycolor('#1F1F1F').toHexString(),
+  gray1000: tinycolor('#000000').toHexString(),
 
   chartBlue: tinycolor('#3E79F0').toHexString(),
   chartBlue2: tinycolor('#5E94FF').toHexString(),
