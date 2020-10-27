@@ -19,13 +19,18 @@ function clean(cb) {
 async function buildTS() {
   const bundle = await rollup.rollup({
     input: './src/var/index.ts',
-    plugins: [typescript(), nodeResolve(), terser({ format: { comments: false } })],
+    plugins: [typescript(), terser({ format: { comments: false } })],
+    output: {
+      dir: './lib',
+      format: 'cjs',
+      file: './lib/index.js'
+    },
   });
 
   await bundle.write({
     format: 'cjs',
     sourcemap: true,
-    dir: 'lib',
+    file: './lib/index.js',
   });
 
   await bundle.write({

@@ -1,8 +1,8 @@
 // eslint-disable-next-line @typescript-eslint/no-require-imports
-const tinycolor = require('tinycolor2');
+import tinycolor from 'tinycolor2';
 
 export default {
-  primaryColor: tinycolor('#07C160').toHexString(),
+  primaryColor: tinycolor('#07C160').toHexString() as string,
   adGreen: tinycolor('#07C160').toHexString(),
   adOrange: tinycolor('#EDA20C').toHexString(),
   adBlue: tinycolor('#2B7BD6').toHexString(),
