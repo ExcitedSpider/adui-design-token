@@ -13,6 +13,7 @@
     "type": "git",
     "url": "git@git.code.oa.com:wxad/adui-design-token.git"
   },
+  "files": ["lib/*"],
   "author": "qefeng",
   "license": "ISC",
   "dependencies": {
