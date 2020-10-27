@@ -15,30 +15,6 @@ function clean(cb) {
 }
 
 async function buildTS() {
-  // const bundle = await rollup.rollup({
-  //   input: './src/var/index.ts',
-  //   plugins: [
-  //     resolve.nodeResolve({
-  //       extensions: ['.js', '.ts'],
-  //     }),
-  //     sucrase({
-  //       exclude: ['node_modules/**'],
-  //       transforms: ['typescript']
-  //     }),
-  //   ],
-  // });
-
-  // await bundle.write({
-  //   file: './lib/index.js',
-  //   format: 'cjs',
-  //   sourcemap: true,
-  // });
-
-  // await bundle.write({
-  //   file: './lib/index.esm.js',
-  //   format: 'esm',
-  //   sourcemap: true,
-  // });
 
   const bundle = await rollup.rollup({
     input: './src/var/index.ts',
