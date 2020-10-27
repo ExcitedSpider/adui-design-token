@@ -60,3 +60,18 @@ npm i --save @tencent/adui-design-token
 ```bash
 npm run build
 ```
+
+### 发布
+
+本项目已集成 CI [蓝盾流水线](http://devops.oa.com/console/pipeline/wxad-design/p-e6203402f2f240019fa3a31b4cbbf631/history)，推送 git tag 即可发布新包版本到 tnpm 上.
+
+例如，要发布 1.0.0 版本：
+
+1. push 所有代码 commit 
+2. 将 `package.json` 中的 `version` 字段修改为 `"1.0.0"`
+3. 推送新版本
+   ```bash
+   git tag 1.0.0
+   git push --tag
+   ```
+4. 企业微信收到信息：已发布
