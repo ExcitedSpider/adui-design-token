@@ -6,7 +6,11 @@ const tag = stdout.toString('utf8').trim();
 const packageDescription = require('./package.json');
 if (packageDescription.version !== tag) {
   throw new Error(
-    `The git tag '${tag}' is not equal to package version '${packageDescription.version}'`
+    `The git tag '${tag}' is not equal to package.json version '${packageDescription.version}'.
+    Use 'git describe --tags --abbrev=0' to check current git tag.
+    Use 'git tag <tag-name>' to create new tag.
+    And check the 'version' field in file ./package.json.
+    `
   );
 }
 
