@@ -8,6 +8,8 @@ const rename = require('gulp-rename');
 const rollup = require('rollup');
 const tokenCompiler = require('./token-compiler');
 const typescript = require('rollup-plugin-typescript2');
+const { nodeResolve } = require('@rollup/plugin-node-resolve');
+const { terser } = require('rollup-plugin-terser');
 
 function clean(cb) {
   del('./lib');
@@ -15,15 +17,9 @@ function clean(cb) {
 }
 
 async function buildTS() {
-
   const bundle = await rollup.rollup({
     input: './src/var/index.ts',
-    plugins: [typescript()],
-    output: {
-      dir: 'lib',
-      format: 'cjs',
-      file: './lib/index.js'
-    },
+    plugins: [typescript(), nodeResolve(), terser({ format: { comments: false } })],
   });
 
   await bundle.write({
