@@ -1,0 +1,11 @@
+{
+  "adWhite": "rgb(255, 255, 255)",
+  "primaryColor": "rgb(7, 193, 96)",
+  "adGreen": "rgb(7, 193, 96)",
+  "adBlue": "rgb(43, 123, 214)",
+  "adOrange": "rgb(237, 162, 12)",
+  "adRed": "rgb(217, 81, 76)",
+  "helperText13Weight": 600,
+  "helperText13Size": "13px",
+  "helperText13LineHeight": "20px"
+}
