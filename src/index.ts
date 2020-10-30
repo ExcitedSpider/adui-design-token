@@ -1,8 +1,18 @@
-import { mergeTokenFromJson } from './util';
-
 import palettes from './palettes';
 import font from './font';
 import config from '../config/project-config';
+
+function mergeTokenFromJson<Target>(target: Target, ...jsonPaths: string[]): Target {
+  const mergedToken = { ...target };
+
+  jsonPaths.forEach((path) => {
+    const json = require(path);
+    Object.assign(mergedToken, json);
+  });
+
+  return mergedToken;
+}
+
 
 const commonBase = {
   // 色板相关

@@ -19,7 +19,7 @@ function clean(cb) {
 async function buildTS() {
   const bundle = await rollup.rollup({
     input: './src/index.ts',
-    plugins: [typescript(), json(),, terser({ format: { comments: false } })],
+    plugins: [typescript(), json(), , terser({ format: { comments: false } })],
     output: {
       dir: './lib',
       format: 'cjs',
@@ -45,7 +45,7 @@ function buildCSS() {
     .pipe(plumber())
     .pipe(
       gulpMustache(join(__dirname, '../src/template/css.mustache'), {
-        compiler: tokenCompiler,
+        compiler: tokenCompiler(),
         showLogger: true,
       })
     )
@@ -59,7 +59,7 @@ function buildSCSS() {
     .pipe(plumber())
     .pipe(
       gulpMustache(join(__dirname, '../src/template/scss.mustache'), {
-        compiler: tokenCompiler,
+        compiler: tokenCompiler(),
       })
     )
     .pipe(rename('var.scss'))
@@ -72,7 +72,7 @@ function buildWXSS() {
     .pipe(plumber())
     .pipe(
       gulpMustache(join(__dirname, '../src/template/wxss.mustache'), {
-        compiler: tokenCompiler,
+        compiler: tokenCompiler(),
       })
     )
     .pipe(rename('var.wxss'))
@@ -80,5 +80,22 @@ function buildWXSS() {
     .pipe(dest('lib'));
 }
 
-exports.default = series(clean, buildTS, parallel(buildCSS, buildSCSS, buildWXSS));
+function buildDeclearation() {
+  return src(['lib/index.js'])
+    .pipe(plumber())
+    .pipe(
+      gulpMustache(join(__dirname, '../src/template/decleartion.mustache'), {
+        compiler: tokenCompiler({ kebabCase: false }),
+      })
+    )
+    .pipe(rename('index.d.ts'))
+    .pipe(logger({ showChange: true }))
+    .pipe(dest('lib'));
+}
+
+exports.default = series(
+  clean,
+  buildTS,
+  parallel(buildCSS, buildSCSS, buildWXSS, buildDeclearation)
+);
 // exports.default = series(clean, buildTS);

@@ -1,9 +1,9 @@
 const kebabCase = require('lodash.kebabcase');
 
-module.exports = (tokenObj) => {
+module.exports = (opt = { kebabCase: true }) => (tokenObj) => {
   return {
     tokens: Object.keys(tokenObj).map((key) => ({
-      key: kebabCase(key),
+      key: opt?.kebabCase ? kebabCase(key) : key,
       value: tokenObj[key],
     })),
   };

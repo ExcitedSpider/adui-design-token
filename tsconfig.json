@@ -6,8 +6,6 @@
     "baseUrl": "./",
     "skipLibCheck": true,
     "paths": {},
-    "declaration": true,
-    "declarationDir": "./lib",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true
   }
