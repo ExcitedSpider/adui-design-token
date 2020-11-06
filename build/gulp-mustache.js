@@ -1,8 +1,20 @@
 const Mustache = require('mustache');
 const fs = require('fs');
 const through2 = require('through2');
+const config = require('../config/project-config');
 
 const PLUGIN_NAME = 'gulp-mustache';
+
+function mergeTokenFromJson(target, ...jsonPaths) {
+  const mergedToken = { ...target };
+
+  jsonPaths.forEach((path) => {
+    const json = require(path);
+    Object.assign(mergedToken, json);
+  });
+
+  return mergedToken;
+}
 
 /**
  * gulp mustache 插件
@@ -22,6 +34,8 @@ function gulpMustache(templatePath, opt = {}) {
 
   return through2.obj(function (file, _, cb) {
     let data = eval(file.contents.toString('utf8'));
+
+    data = mergeTokenFromJson(data, ...config.externalCommonToken)
 
     const { compiler, showLogger } = opt;
 

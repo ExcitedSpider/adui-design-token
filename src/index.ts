@@ -1,17 +1,6 @@
 import palettes from './palettes';
 import font from './font';
-import config from '../config/project-config';
 
-function mergeTokenFromJson<Target>(target: Target, ...jsonPaths: string[]): Target {
-  const mergedToken = { ...target };
-
-  jsonPaths.forEach((path) => {
-    const json = require(path);
-    Object.assign(mergedToken, json);
-  });
-
-  return mergedToken;
-}
 
 
 const commonBase = {
@@ -23,10 +12,10 @@ const commonBase = {
   // unit: '1px',
 };
 
-const common = mergeTokenFromJson(commonBase, ...config.externalCommonToken);
+const common = commonBase ;
 
 export default common;
 
-export const mobile = mergeTokenFromJson(common, ...config.externalMobileToken);
+export const mobile = common;
 
-export const web = mergeTokenFromJson(common, ...config.externalWebToken);
+export const web = common;
