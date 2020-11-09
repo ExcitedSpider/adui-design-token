@@ -1,18 +1,15 @@
-declare const common: {
-{{#tokens}} 
-  {{key}}: string | number;
-{{/tokens}}
-};
-export default common;
+{{#default}} 
+export declare const {{key}}: {{type}};
+{{/default}}
 
 export declare const mobile: {
-{{#tokens}} 
-  {{key}}: string | number;
-{{/tokens}}
+{{#mobile}} 
+  {{key}}: {{type}};
+{{/mobile}}
 };
 
 export declare const web: {
-{{#tokens}} 
-  {{key}}: string | number;
-{{/tokens}}
+{{#web}} 
+  {{key}}: {{type}};
+{{/web}}
 };

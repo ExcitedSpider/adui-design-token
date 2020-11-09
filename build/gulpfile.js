@@ -35,11 +35,7 @@ async function buildTS() {
 
   const bundle = await rollup.rollup({
     input: './lib/intern-index.js',
-    plugins: [commonjs()]
-    // output: {
-    //   dir: './lib',
-    //   format: 'cjs',
-    // },
+    plugins: [commonjs()],
   });
 
   await bundle.write({
@@ -97,7 +93,7 @@ function buildDeclearation() {
     .pipe(plumber())
     .pipe(
       gulpMustache(join(__dirname, '../src/template/decleartion.mustache'), {
-        compiler: tokenCompiler({ kebabCase: false }),
+        compiler: tokenCompiler({ kebabCase: false, namedExport: true }),
       })
     )
     .pipe(rename('index.d.ts'))
@@ -110,4 +106,3 @@ exports.default = series(
   buildTS,
   parallel(buildCSS, buildSCSS, buildWXSS, buildDeclearation)
 );
-// exports.default = series(clean, buildTS);
