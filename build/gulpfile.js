@@ -8,8 +8,9 @@ const rename = require('gulp-rename');
 const rollup = require('rollup');
 const tokenCompiler = require('./token-compiler');
 const typescript = require('rollup-plugin-typescript2');
-const json = require('@rollup/plugin-json');
 const { terser } = require('rollup-plugin-terser');
+const { externalInject } = require('./external-inject');
+const commonjs = require('@rollup/plugin-commonjs');
 
 function clean(cb) {
   del('./lib');
@@ -17,26 +18,38 @@ function clean(cb) {
 }
 
 async function buildTS() {
-  const bundle = await rollup.rollup({
+  const internBundle = await rollup.rollup({
     input: './src/index.ts',
-    plugins: [typescript(), json(), , terser({ format: { comments: false } })],
+    plugins: [typescript(), terser({ format: { comments: false } })],
     output: {
       dir: './lib',
       format: 'cjs',
-      file: './lib/index.js',
     },
+  });
+
+  await internBundle.write({
+    format: 'cjs',
+    file: './lib/intern-index.js',
+    plugins: [externalInject()],
+  });
+
+  const bundle = await rollup.rollup({
+    input: './lib/intern-index.js',
+    plugins: [commonjs()]
+    // output: {
+    //   dir: './lib',
+    //   format: 'cjs',
+    // },
   });
 
   await bundle.write({
     format: 'cjs',
-    sourcemap: true,
     file: './lib/index.js',
   });
 
   await bundle.write({
     file: './lib/index.esm.js',
     format: 'esm',
-    sourcemap: true,
   });
 }
 
@@ -46,7 +59,6 @@ function buildCSS() {
     .pipe(
       gulpMustache(join(__dirname, '../src/template/css.mustache'), {
         compiler: tokenCompiler(),
-        showLogger: true,
       })
     )
     .pipe(rename('var.css'))
@@ -72,7 +84,7 @@ function buildWXSS() {
     .pipe(plumber())
     .pipe(
       gulpMustache(join(__dirname, '../src/template/wxss.mustache'), {
-        compiler: tokenCompiler(),
+        compiler: tokenCompiler({ kebabCase: false }),
       })
     )
     .pipe(rename('var.wxss'))
