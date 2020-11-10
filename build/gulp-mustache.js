@@ -23,7 +23,11 @@ function gulpMustache(templatePath, opt = {}) {
   return through2.obj(function (file, _, cb) {
     let data = eval(file.contents.toString('utf8'));
 
-    const { compiler, showLogger } = opt;
+    const { namedExport, compiler, showLogger } = opt;
+
+    if(namedExport){
+      data = data[namedExport]
+    }
 
     if (typeof compiler === 'function') {
       data = compiler(data);
