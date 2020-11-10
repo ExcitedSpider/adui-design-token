@@ -1,6 +1,6 @@
 const { series, dest, src, parallel } = require('gulp');
-const { createWriteStream } = require('fs');
-const { Readable } = require('stream');
+const { createWriteStream, writeFileSync } = require('fs');
+const { Readable, write } = require('stream');
 const logger = require('gulp-logger');
 const del = require('del');
 const plumber = require('gulp-plumber');
@@ -26,12 +26,8 @@ function cleanInternal(cb) {
 }
 
 function createWxmpAdaptation(cb) {
-  const sourceStream = Readable.from([
-    `const token = require('./lib/index'); module.exports = token;`,
-  ]);
-  const targetSteam = createWriteStream('./lib/wxmpAdaptation.js');
-
-  return sourceStream.pipe(targetSteam);
+  writeFileSync('./lib/wxmpAdaptation.js', `const token = require('./lib/index'); module.exports = token;`)
+  cb()
 }
 
 async function buildTS() {
