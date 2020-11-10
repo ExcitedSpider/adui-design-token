@@ -32,16 +32,14 @@ function externalInject(
         let exportsWithExternal = module[exportName];
         if (options.externalExportMap[exportName]) {
           const targetExternals = options.externalExportMap[exportName].reduce((acc, cur) => {
-            return acc.concat(Array.isArray(externalConfig[cur])? externalConfig[cur] : [externalConfig[cur]]);
+            return acc.concat(
+              Array.isArray(externalConfig[cur]) ? externalConfig[cur] : [externalConfig[cur]]
+            );
           }, []);
 
           exportsWithExternal = mergeTokenFromJson(module[exportName], ...targetExternals);
         }
-        if (exportName === 'default') {
-          return accSource + `module.exports = ${toSource(exportsWithExternal)};\n`;
-        } else {
-          return accSource + `module.exports.${exportName} = ${toSource(exportsWithExternal)};\n`;
-        }
+        return accSource + `module.exports.${exportName} = ${toSource(exportsWithExternal)};\n`;
       }, '');
 
       return {

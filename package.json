@@ -2,12 +2,13 @@
   "name": "@tencent/adui-design-token",
   "version": "1.0.6",
   "description": "适用于 ADUI 规范的 design token; 提供 cjs, esm, css, scss, wxss 的引用方式",
-  "main": "lib/index.js",
-  "module": "lib/index.esm.js",
-  "miniprogram": "lib",
+  "main": ".//lib/index.js",
+  "module": ".//lib/index.esm.js",
+  "miniprogram": "./",
   "sideEffects": false,
   "scripts": {
-    "build": "gulp -f build/gulpfile.js --cwd ./"
+    "build": "gulp -f build/gulpfile.js --cwd ./",
+    "postinstall": "node ./post-install-hook.js"
   },
   "husky": {
     "hooks": {
@@ -19,7 +20,7 @@
     "url": "git@git.code.oa.com:wxad/adui-design-token.git"
   },
   "files": [
-    "lib/*"
+    "lib", "post-install-hook.js"
   ],
   "author": "qefeng",
   "license": "ISC",
