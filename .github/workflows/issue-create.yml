@@ -23,7 +23,6 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}    
-    - run: echo ${{ github.event.comment.body }}
-    - run: echo ${{ github.event.label.name }}
+    - run: echo ${{ github }}
     - run: npm ci
     - run: npm run build
