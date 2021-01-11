@@ -23,6 +23,6 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}    
-    - run: echo ${{ toJson(github) }}
+    - run: echo "${{ toJson(github) }}"
     - run: npm ci
     - run: npm run build
