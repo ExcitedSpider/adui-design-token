@@ -1,5 +1,5 @@
 {
-  "name": "@tencent/adui-design-token",
+  "name": "adui-design-token",
   "version": "1.0.8",
   "description": "适用于 ADUI 规范的 design token; 提供 cjs, esm, css, scss, wxss 的引用方式",
   "main": ".//lib/index.js",
@@ -20,14 +20,14 @@
     "url": "git@git.code.oa.com:wxad/adui-design-token.git"
   },
   "files": [
-    "lib", "post-install-hook.js"
+    "lib",
+    "post-install-hook.js"
   ],
   "author": "qefeng",
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
     "@rollup/plugin-commonjs": "^16.0.0",
-    "@tencent/eslint-config-tencent": "^0.12.2",
     "@types/gulp": "^4.0.7",
     "@types/mustache": "^4.0.1",
     "@types/tinycolor2": "^1.4.2",

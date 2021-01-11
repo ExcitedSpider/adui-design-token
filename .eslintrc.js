@@ -8,9 +8,7 @@ module.exports = {
     node: true,
   },
   extends: [
-    '@tencent/eslint-config-tencent',
-    '@tencent/eslint-config-tencent/ts',
-    'plugin:prettier/recommended',
+    'airbnb',
   ],
   parserOptions: {
     parser: '@typescript-eslint/parser',
