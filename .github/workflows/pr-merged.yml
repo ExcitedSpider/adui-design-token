@@ -8,15 +8,19 @@ on:
 jobs:
   merge_job:
     # this job will only run if the PR has been merged
-    if: github.event.pull_request.merged == true
+    if: github.event.pull_request.merged == true && github.event.pull_request.labels[0].name == 'figma-bot'
     runs-on: ubuntu-latest
     steps:
     - run: |
         echo PR #${{ github.event.number }} has been merged
-    - runs: echo '${{ toJson(github) }}'
+    - run: echo '${{ toJson(github) }}'
     - uses: actions/setup-node@v1
     - uses: actions/checkout@v2.1.0
       with:
-        node-version: 14.x
+        node-version: 14.x    
     - run: npm ci
+    - run: npm run store-json -- -i '${{ github.event.pull_request.body }}'
     - run: npm run build
+    - uses: JS-DevTools/npm-publish@v1
+      with:
+        token: ${{ secrets.NPM_TOKEN }}
