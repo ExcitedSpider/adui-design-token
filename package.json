@@ -11,11 +11,6 @@
     "postinstall": "node ./post-install-hook.js",
     "store-json": "node ./store-json.js"
   },
-  "husky": {
-    "hooks": {
-      "pre-push": "node push-hook"
-    }
-  },
   "repository": {
     "type": "git",
     "url": "git@git.code.oa.com:wxad/adui-design-token.git"
