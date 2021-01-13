@@ -13,6 +13,7 @@ jobs:
     steps:
     - run: |
         echo PR #${{ github.event.number }} has been merged
+    - uses: actions/checkout@v2.1.0
     - uses: actions/setup-node@v1
       with:
         node-version: 14.x
