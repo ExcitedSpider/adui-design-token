@@ -37,6 +37,7 @@
     "eslint": "^7.11.0",
     "eslint-config-prettier": "^6.14.0",
     "eslint-plugin-prettier": "^3.1.4",
+    "glob": "^7.1.6",
     "gulp": "^4.0.2",
     "gulp-logger": "0.0.2",
     "gulp-plumber": "^1.2.1",
@@ -56,9 +57,7 @@
     "tosource": "^2.0.0-alpha.2",
     "tslib": "^2.0.3",
     "typescript": "^4.0.5",
-    "yargs": "^7.1.1",
-    "glob": "^7.1.6"
+    "yargs": "^7.1.1"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }

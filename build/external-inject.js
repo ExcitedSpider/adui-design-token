@@ -10,7 +10,6 @@ function mergeTokenFromJson(target, ...jsonGlobPaths) {
 
   jsonGlobPaths.forEach((globPath) => {
     const fsPaths = glob.sync(resolve(globPath));
-    console.log(globPath, fsPaths);
     fsPaths.forEach((fsPath) => {
       const json = require(fsPath);
       Object.assign(mergedToken, json);

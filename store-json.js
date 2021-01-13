@@ -23,7 +23,6 @@ function getParams() {
 
 function main() {
   const { input, tag = 'common' } = getParams();
-  console.log(input)
   try {
     const parsedInput = JSON.parse(input);
     if (typeof parsedInput !== 'object' || Object.keys(parsedInput).length === 0) {
