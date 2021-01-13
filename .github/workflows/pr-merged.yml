@@ -13,10 +13,10 @@ jobs:
     steps:
     - run: |
         echo PR #${{ github.event.number }} has been merged
-    - runs: echo '${{ toJson(github) }}'
+    - run: echo '${{ toJson(github) }}'
     - uses: actions/setup-node@v1
     - uses: actions/checkout@v2.1.0
       with:
-        node-version: 14.x
+        node-version: 14.x    
     - run: npm ci
     - run: npm run build
