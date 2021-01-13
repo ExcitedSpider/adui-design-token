@@ -59,6 +59,5 @@
     "yargs": "^7.1.1",
     "glob": "^7.1.6"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
