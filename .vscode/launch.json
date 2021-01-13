@@ -5,6 +5,14 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "store-json",
+      "program": "${workspaceFolder}/store-json.js",
+      "args": ["-i", "{\"aa\": 11}"],
+      "request": "launch",
+      "skipFiles": ["<node_internals>/**"],
+      "type": "pwa-node"
+    },
+    {
       "type": "node",
       "request": "launch",
       "name": "debug build",

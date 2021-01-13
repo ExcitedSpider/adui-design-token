@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 const yargs = require('yargs');
+const { writeFileSync } = require('fs');
 
 function getParams() {
   return yargs
@@ -21,14 +22,18 @@ function getParams() {
 }
 
 function main() {
-  const { input, tag } = getParams();
+  const { input, tag = 'common' } = getParams();
+  console.log(input)
   try {
-    JSON.parse(input);
+    const parsedInput = JSON.parse(input);
+    if (typeof parsedInput !== 'object' || Object.keys(parsedInput).length === 0) {
+      throw new Error(`"${input}" is not json object`);
+    }
   } catch (error) {
-    throw(new Error('The input is not valid json'))
+    throw new Error(`Invalid input: ${error}`);
   }
 
-  
+  writeFileSync(`external/figma.${tag}.json`, input);
 }
 
 main();

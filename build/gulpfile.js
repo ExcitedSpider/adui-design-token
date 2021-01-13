@@ -1,6 +1,5 @@
 const { series, dest, src, parallel } = require('gulp');
-const { createWriteStream, writeFileSync } = require('fs');
-const { Readable, write } = require('stream');
+const { writeFileSync } = require('fs');
 const logger = require('gulp-logger');
 const del = require('del');
 const plumber = require('gulp-plumber');

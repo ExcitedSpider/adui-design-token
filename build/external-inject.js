@@ -1,12 +1,20 @@
 const nodeEval = require('node-eval');
 const toSource = require('tosource');
+const glob = require('glob');
+const path = require('path');
 
-function mergeTokenFromJson(target, ...jsonPaths) {
+const resolve = (relativePath) => path.resolve(__dirname, relativePath);
+
+function mergeTokenFromJson(target, ...jsonGlobPaths) {
   const mergedToken = { ...target };
 
-  jsonPaths.forEach((path) => {
-    const json = require(path);
-    Object.assign(mergedToken, json);
+  jsonGlobPaths.forEach((globPath) => {
+    const fsPaths = glob.sync(resolve(globPath));
+    console.log(globPath, fsPaths);
+    fsPaths.forEach((fsPath) => {
+      const json = require(fsPath);
+      Object.assign(mergedToken, json);
+    });
   });
 
   return mergedToken;

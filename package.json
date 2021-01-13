@@ -56,6 +56,9 @@
     "tosource": "^2.0.0-alpha.2",
     "tslib": "^2.0.3",
     "typescript": "^4.0.5",
-    "yargs": "^7.1.1"
+    "yargs": "^7.1.1",
+    "glob": "^7.1.6"
+  },
+  "dependencies": {
   }
 }
