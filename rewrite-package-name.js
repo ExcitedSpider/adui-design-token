@@ -21,6 +21,9 @@ function main() {
   const pkg = require('./package.json');
 
   pkg.name = `${prefix}/${pkg.name}`;
+
+  console.log('New Package:', '\n', pkg);
+
   writeFileSync('./package.json', JSON.stringify(pkg, null, 2));
 }
 
