@@ -22,11 +22,15 @@ jobs:
     - run: npm run store-json -- -i '${{ github.event.pull_request.body }}'
     - name: Add changes to Git tracking
       run: git add -A .
+    
+    - name: config commit username
+      run: git config user.name qefeng
+  
+    - name: config commit email
+      run: git config user.email qefeng@tencent.com
       
     - name: Commit changes
-      run: git -c "user.name ${{ github.actor }}"\
-              -c "user.email qefeng@tencent.com"\
-              commit -m "figma external token update"
+      run: git commit -m "figma external token update"
         
     - name: Push changes
       uses: ad-m/github-push-action@master
