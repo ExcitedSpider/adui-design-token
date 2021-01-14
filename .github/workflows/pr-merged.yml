@@ -26,7 +26,6 @@ jobs:
     - name: Commit changes
       uses: gha-utilities/workspace-commit@v0.0.3
       with:
-        message: Updates externals
         all: true
         
     - name: Push changes
