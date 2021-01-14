@@ -24,10 +24,9 @@ jobs:
       run: git add -A .
       
     - name: Commit changes
-      uses: gha-utilities/workspace-commit@v0.0.3
-      with:
-        message: Updates externals
-        all: true
+      run: git -c "user.name ${{ github.actor }}"\
+              -c "user.email qefeng@tencent.com"\
+              commit -m "figma external token update"
         
     - name: Push changes
       uses: ad-m/github-push-action@master
