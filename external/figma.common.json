@@ -1,0 +1,21 @@
+{
+  "adWhite": "rgb(255, 255, 255)",
+  "primaryColor": "rgb(7, 193, 96)",
+  "grey50": "rgb(250, 250, 250)",
+  "grey500": "rgb(214, 214, 214)",
+  "adGreen": "rgb(7, 193, 96)",
+  "grey100": "rgb(240, 240, 240)",
+  "grey600": "rgb(199, 199, 199)",
+  "adBlue": "rgb(43, 123, 214)",
+  "grey200": "rgb(235, 235, 235)",
+  "grey700": "rgb(163, 163, 163)",
+  "adOrange": "rgb(237, 162, 12)",
+  "grey300": "rgb(230, 230, 230)",
+  "grey800": "rgb(107, 107, 107)",
+  "adRed": "rgb(217, 81, 76)",
+  "grey400": "rgb(224, 224, 224)",
+  "grey900": "rgb(31, 31, 31)",
+  "helperText13Weight": 600,
+  "helperText13Size": "13px",
+  "helperText13LineHeight": "20px"
+}
