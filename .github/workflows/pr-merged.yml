@@ -20,6 +20,21 @@ jobs:
         node-version: 14.x    
     - run: npm ci
     - run: npm run store-json -- -i '${{ github.event.pull_request.body }}'
+    - name: Add changes to Git tracking
+      run: git add -A .
+      
+    - name: Commit changes
+      uses: gha-utilities/workspace-commit@v0.0.3
+      with:
+        message: Updates externals
+        all: true
+        
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: master
+ 
     - run: npm run build
     - uses: JS-DevTools/npm-publish@v1
       with:
