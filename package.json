@@ -9,7 +9,8 @@
   "scripts": {
     "build": "gulp -f build/gulpfile.js --cwd ./",
     "postinstall": "node ./post-install-hook.js",
-    "store-json": "node ./store-json.js"
+    "store-json": "node ./store-json.js",
+    "prefix-name": "node ./rewrite-package-name.js"
   },
   "repository": {
     "type": "git",
